@@ -1,7 +1,7 @@
 class ConteudoModel {
-  constructor (titulo, descricao, duracao, link) {
+  constructor (titulo, tipo, duracao, link) {
     this.titulo = titulo
-    this.descricao = descricao
+    this.tipo = tipo
     this.duracao = duracao
     this.link = link
   }

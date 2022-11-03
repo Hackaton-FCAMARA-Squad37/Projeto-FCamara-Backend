@@ -31,5 +31,6 @@
     "express": "^4.18.2",
     "sequelize": "^6.25.3",
     "sqlite3": "^5.1.2"
-  }
+  },
+  "type":"module"
 }

@@ -6,8 +6,9 @@ class ConteudosDAO extends DAO {
         CREATE TABLE IF NOT EXISTS conteudos(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             titulo VARCHAR,
-            email VARCHAR,
-            senha VARCHAR
+            tipo VARCHAR,
+            duracao VARCHAR,
+            link VARCHAR
         )
         `
     const response = await this.createTable(query)
