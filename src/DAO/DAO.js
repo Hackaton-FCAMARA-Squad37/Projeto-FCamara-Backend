@@ -11,9 +11,9 @@ class DAO {
 
   static async createTable (query) {
     return new Promise((resolve, reject) => {
-      Database.run(query, (e) => {
-        if (e) {
-          reject(e.message)
+      Database.run(query, (error) => {
+        if (error) {
+          reject(error.message)
         } else {
           resolve('Tabela criada com sucesso!')
         }
