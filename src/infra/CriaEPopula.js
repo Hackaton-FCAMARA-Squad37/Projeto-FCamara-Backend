@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import UsuariosDAO from '../DAO/UsuarioDAO'
-import ConteudosDAO from '../DAO/ConteudoDAO'
+import UsuariosDAO from '../DAO/UsuarioDAO.js'
+import ConteudosDAO from '../DAO/ConteudoDAO.js'
 
 const usuario = {
   nome: 'João das Couves',

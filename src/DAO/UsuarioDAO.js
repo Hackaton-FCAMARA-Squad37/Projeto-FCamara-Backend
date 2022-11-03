@@ -15,7 +15,7 @@ class UsuariosDAO extends DAO {
   };
 
   static async inserirUsuario (usuario) {
-    const query = 'INSERT INTO usuarios (nome, email, telefone, cpf) VALUES (?,?,?,?)'
+    const query = 'INSERT INTO usuarios (nome, email, senha) VALUES (?,?,?)'
     const response = await this.inserir(usuario, query)
     return response
   };
@@ -33,7 +33,7 @@ class UsuariosDAO extends DAO {
   };
 
   static async atualizarUsuarioPorId (id, body) {
-    const query = 'UPDATE usuarios SET (nome, email, telefone, cpf) = (?, ?, ?, ?) WHERE id = ?'
+    const query = 'UPDATE usuarios SET (nome, email, senha) = (?, ?, ?) WHERE id = ?'
     const response = this.atualizaPorId(body, id, query)
     return response
   };
