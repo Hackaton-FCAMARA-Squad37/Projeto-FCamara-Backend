@@ -1,7 +1,7 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
-import Usuarios from "./controllers/Usuarios.js";
+import usuariosRouter from "./routes/usuariosRoutes.js";
 
 dotenv.config();
 
@@ -17,4 +17,4 @@ app.use(cors());
 
 console.log(process.env.HOSTNAME);
 
-Usuarios.rotas(app);
+app.use(usuariosRouter);
