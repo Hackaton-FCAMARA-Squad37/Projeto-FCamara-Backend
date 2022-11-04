@@ -1,20 +1,20 @@
-import express from 'express'
-import * as dotenv from 'dotenv'
-import cors from 'cors'
-import Usuarios from './controllers/Usuarios.js'
+import express from "express";
+import * as dotenv from "dotenv";
+import cors from "cors";
+import Usuarios from "./controllers/Usuarios.js";
 
-dotenv.config()
+dotenv.config();
 
-const port = process.env.PORT || 3002
-const app = express()
+const port = process.env.PORT || 3002;
+const app = express();
 
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`)
-})
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
-console.log(process.env.HOSTNAME)
+console.log(process.env.HOSTNAME);
 
-Usuarios.rotas(app)
+Usuarios.rotas(app);
