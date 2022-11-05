@@ -15,7 +15,7 @@ class Trilhas {
 
   static getTrilhasById = async (req, res) => {
     try {
-      const trilha = await TrilhasDAO.listarUsuarioPorId(req.params.id);
+      const trilha = await TrilhasDAO.listarTrilhaPorId(req.params.id);
       if (!trilha) {
         throw new Error("Trilha não encontrada para esse ID");
       }
@@ -29,7 +29,7 @@ class Trilhas {
   static postTrilha = async (req, res) => {
     try {
       const trilha = new TrilhasModel(...Object.values(req.body));
-      const response = await TrilhasDAO.inserirUsuario(trilha);
+      const response = await TrilhasDAO.inserirTrilha(trilha);
 
       res.status(201).json(response);
     } catch (error) {
@@ -39,7 +39,7 @@ class Trilhas {
 
   static deleteTrilha = async (req, res) => {
     try {
-      const trilha = await TrilhasDAO.deletarUsuarioPorId(req.params.id);
+      const trilha = await TrilhasDAO.deletarTrilhaPorId(req.params.id);
       if (!trilha) {
         throw new Error("Trilha não encontrado para esse Id");
       }
