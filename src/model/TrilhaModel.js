@@ -1,7 +1,7 @@
-class DivisoesModel {
+class TrilhaModel {
   constructor (titulo) {
     this.titulo = titulo
   }
 }
 
-export default DivisoesModel
+export default TrilhaModel
