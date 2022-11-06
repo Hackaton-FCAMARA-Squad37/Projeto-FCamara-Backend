@@ -10,7 +10,7 @@ class ConteudosDAO extends DAO {
             duracao VARCHAR,
             link VARCHAR,
             donoConteudo VARCHAR,
-            dificuldade
+            dificuldade INTEGER
         )
         `
     const response = await this.createTable(query)
