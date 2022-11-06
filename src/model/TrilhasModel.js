@@ -1,7 +1,7 @@
 class TrilhasModel {
-  constructor(titulo) {
-    this.titulo = titulo;
+  constructor (titulo) {
+    this.titulo = titulo
   }
 }
 
-export default TrilhasModel;
+export default TrilhasModel

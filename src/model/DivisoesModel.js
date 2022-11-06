@@ -1,7 +1,7 @@
 class DivisoesModel {
-  constructor(titulo) {
-    this.titulo = titulo;
+  constructor (titulo) {
+    this.titulo = titulo
   }
 }
 
-export default DivisoesModel;
+export default DivisoesModel

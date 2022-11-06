@@ -1,9 +1,9 @@
 import DAO from './DAO.js'
 
-class TrilhasDAO extends DAO {
+class NiveisDAO extends DAO {
   static async createTableConteudos () {
     const query = `
-            CREATE TABLE IF NOT EXISTS trilhas(
+            CREATE TABLE IF NOT EXISTS niveis(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 titulo VARCHAR,
             )
@@ -12,29 +12,29 @@ class TrilhasDAO extends DAO {
     return response
   }
 
-  static async inserirTrilha (trilha) {
+  static async inserirNivel (nivel) {
     const query = 'INSERT INTO trilhas (titulo) VALUES (?)'
-    const response = await this.inserir(trilha, query)
+    const response = await this.inserir(nivel, query)
     return response
   }
 
-  static async listarTodasTrilhas () {
-    const query = 'SELECT * FROM trilhas'
+  static async listarTodasNiveis () {
+    const query = 'SELECT * FROM niveis'
     const response = await this.listarTodos(query)
     return response
   }
 
-  static async listarTrilhaPorId (id) {
-    const query = 'SELECT * FROM trilhas WHERE id = ?'
+  static async listarNivelPorId (id) {
+    const query = 'SELECT * FROM niveis WHERE id = ?'
     const response = await this.listarPorId(id, query)
     return response
   }
 
-  static async deletarTrilhaPorId (id) {
-    const query = 'DELETE FROM trilhas WHERE id = ?'
+  static async deletarNivelPorId (id) {
+    const query = 'DELETE FROM niveis WHERE id = ?'
     const response = this.deletaPorId(id, query)
     return response
   }
 }
 
-export default TrilhasDAO
+export default NiveisDAO

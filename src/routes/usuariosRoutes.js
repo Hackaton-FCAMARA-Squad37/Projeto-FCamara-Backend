@@ -1,24 +1,24 @@
-import express from "express";
-import Usuarios from "../controllers/Usuarios.js";
+import express from 'express'
+import Usuarios from '../controllers/Usuarios.js'
 
-const usuariosRouter = express.Router();
+const usuariosRouter = express.Router()
 
 // GET /
-usuariosRouter.get("/", Usuarios.getPaginaPadrao);
+usuariosRouter.get('/', Usuarios.getPaginaPadrao)
 
 // GET /usuarios
-usuariosRouter.get("/usuarios", Usuarios.getAllUsuarios);
+usuariosRouter.get('/usuarios', Usuarios.getAllUsuarios)
 
 // GET /usuarios/:id
-usuariosRouter.get("/usuarios/:id", Usuarios.getUsuariosById);
+usuariosRouter.get('/usuarios/:id', Usuarios.getUsuariosById)
 
 // POST /usuarios
-usuariosRouter.post("/usuarios", Usuarios.postUsuario);
+usuariosRouter.post('/usuarios', Usuarios.postUsuario)
 
 // PUT /usuarios/:id
-usuariosRouter.put("/usuarios/:id", Usuarios.putUsuario);
+usuariosRouter.put('/usuarios/:id', Usuarios.putUsuario)
 
 // DELETE "/usuarios/:id"
-usuariosRouter.delete("/usuarios/:id", Usuarios.deleteUsuario);
+usuariosRouter.delete('/usuarios/:id', Usuarios.deleteUsuario)
 
-export default usuariosRouter;
+export default usuariosRouter
