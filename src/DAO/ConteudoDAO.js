@@ -10,7 +10,9 @@ class ConteudosDAO extends DAO {
             duracao VARCHAR,
             link VARCHAR,
             donoConteudo VARCHAR,
-            dificuldade INTEGER
+            trilha VARCHAR,
+            nivel VARCHAR,
+            tags VARCHAR
         )
         `
     const response = await this.createTable(query)
@@ -19,7 +21,7 @@ class ConteudosDAO extends DAO {
 
   static async inserirConteudo (conteudo) {
     const query =
-      'INSERT INTO conteudos (titulo, tipo, duracao, link) VALUES (?,?,?,?)'
+      'INSERT INTO conteudos (titulo, tipo, duracao, link, donoConteudo, trilha, nivel, tags) VALUES (?,?,?,?,?,?,?,?)'
     const response = await this.inserir(conteudo, query)
     return response
   }
@@ -38,7 +40,7 @@ class ConteudosDAO extends DAO {
 
   static async atualizarConteudoPorId (id, body) {
     const query =
-      'UPDATE conteudos SET (titulo, tipo, duracao, link) = (?, ?, ?, ?) WHERE id = ?'
+      'UPDATE conteudos SET (titulo, tipo, duracao, link, donoConteudo, trilha, nivel, tags) = (?,?,?,?,?,?,?,?) WHERE id = ?'
     const response = this.atualizaPorId(body, id, query)
     return response
   }

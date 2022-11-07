@@ -1,7 +1,6 @@
 class NivelModel {
-  constructor (titulo, trilha) {
+  constructor (titulo) {
     this.titulo = titulo
-    this.trilha = trilha
   }
 }
 

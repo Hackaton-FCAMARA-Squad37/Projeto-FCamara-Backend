@@ -1,11 +1,13 @@
 class ConteudoModel {
-  constructor (titulo, tipo, duracao, link, donoConteudo, dificuldade) {
+  constructor (titulo, tipo, duracao, link, donoConteudo, trilha, nivel, tags) {
     this.titulo = titulo
     this.tipo = tipo
     this.duracao = duracao
     this.link = link
     this.donoConteudo = donoConteudo
-    this.dificuldade = dificuldade
+    this.trilha = trilha
+    this.nivel = nivel
+    this.tags = tags
   }
 }
 

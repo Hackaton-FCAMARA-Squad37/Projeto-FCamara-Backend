@@ -1,5 +1,5 @@
-import NiveisModel from '../model/NiveisModel.js'
-import NiveisDAO from '../DAO/NiveisDAO.js'
+import NiveisModel from '../model/NivelModel.js'
+import NiveisDAO from '../DAO/NivelDAO.js'
 
 class Niveis {
   static getAllNiveis = async (req, res) => {

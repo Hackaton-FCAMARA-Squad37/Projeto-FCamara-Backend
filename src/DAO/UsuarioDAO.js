@@ -7,7 +7,8 @@ class UsuariosDAO extends DAO {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome VARCHAR,
             email VARCHAR,
-            senha VARCHAR
+            senha VARCHAR,
+            xp INTEGER
         )
         `
     const response = await this.createTable(query)
@@ -15,7 +16,7 @@ class UsuariosDAO extends DAO {
   };
 
   static async inserirUsuario (usuario) {
-    const query = 'INSERT INTO usuarios (nome, email, senha) VALUES (?,?,?)'
+    const query = 'INSERT INTO usuarios (nome, email, senha, xp) VALUES (?,?,?,?)'
     const response = await this.inserir(usuario, query)
     return response
   };
@@ -33,7 +34,7 @@ class UsuariosDAO extends DAO {
   };
 
   static async atualizarUsuarioPorId (id, body) {
-    const query = 'UPDATE usuarios SET (nome, email, senha) = (?, ?, ?) WHERE id = ?'
+    const query = 'UPDATE usuarios SET (nome, email, senha, xp) = (?,?,?,?) WHERE id = ?'
     const response = this.atualizaPorId(body, id, query)
     return response
   };

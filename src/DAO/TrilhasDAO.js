@@ -1,11 +1,11 @@
 import DAO from './DAO.js'
 
 class TrilhasDAO extends DAO {
-  static async createTableConteudos () {
+  static async createTableTrilhas () {
     const query = `
             CREATE TABLE IF NOT EXISTS trilhas(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                titulo VARCHAR,
+                titulo VARCHAR
             )
             `
     const response = await this.createTable(query)

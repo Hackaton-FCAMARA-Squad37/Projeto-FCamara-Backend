@@ -10,9 +10,9 @@ niveisRouter.get('/niveis', Niveis.getAllNiveis)
 niveisRouter.get('/niveis/:id', Niveis.getNiveisById)
 
 // POST /Niveis
-niveisRouter.post('/niveis', Niveis.postDivisao)
+niveisRouter.post('/niveis', Niveis.postNivel)
 
 // DELETE "/Niveis/:id"
-niveisRouter.delete('/niveis/:id', Niveis.deleteDivisao)
+niveisRouter.delete('/niveis/:id', Niveis.deleteNivel)
 
 export default niveisRouter

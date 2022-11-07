@@ -1,11 +1,11 @@
 import DAO from './DAO.js'
 
 class NiveisDAO extends DAO {
-  static async createTableConteudos () {
+  static async createTableNiveis () {
     const query = `
             CREATE TABLE IF NOT EXISTS niveis(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                titulo VARCHAR,
+                titulo VARCHAR
             )
             `
     const response = await this.createTable(query)
@@ -13,12 +13,12 @@ class NiveisDAO extends DAO {
   }
 
   static async inserirNivel (nivel) {
-    const query = 'INSERT INTO trilhas (titulo) VALUES (?)'
+    const query = 'INSERT INTO niveis (titulo) VALUES (?)'
     const response = await this.inserir(nivel, query)
     return response
   }
 
-  static async listarTodasNiveis () {
+  static async listarTodosNiveis () {
     const query = 'SELECT * FROM niveis'
     const response = await this.listarTodos(query)
     return response
