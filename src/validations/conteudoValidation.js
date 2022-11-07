@@ -4,7 +4,7 @@ const conteudoSchema = yup.object({
   titulo: yup.string().required(),
   tipo: yup.string().required(),
   duracao: yup.string().required(),
-  link: yup.url().required(),
+  link: yup.string().url().required(),
   donoConteudo: yup.string().required(),
   trilha: yup.string().required(),
   nivel: yup.string().required(),

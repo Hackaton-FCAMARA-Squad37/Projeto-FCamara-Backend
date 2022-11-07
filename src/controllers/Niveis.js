@@ -4,7 +4,7 @@ import NiveisDAO from '../DAO/NivelDAO.js'
 class Niveis {
   static getAllNiveis = async (req, res) => {
     try {
-      const niveis = await NiveisDAO.listarTodasNiveis()
+      const niveis = await NiveisDAO.listarTodosNiveis()
       if (niveis.length === 0) throw new Error('O database está vazio')
 
       res.status(200).json({ result: niveis })

@@ -1,34 +1,34 @@
-import express from "express";
-import Usuarios from "../controllers/Usuarios.js";
-import validation from "../middlewares/validationMiddleware.js";
-import usuarioSchema from "../validations/usuarioValidation.js";
+import express from 'express'
+import Usuarios from '../controllers/Usuarios.js'
+import validation from '../middlewares/validationMiddleware.js'
+import usuarioSchema from '../validations/usuarioValidation.js'
 
-const usuariosRouter = express.Router();
+const usuariosRouter = express.Router()
 
 // GET /
-usuariosRouter.get("/", Usuarios.getPaginaPadrao);
+usuariosRouter.get('/', Usuarios.getPaginaPadrao)
 
 // GET /usuarios
-usuariosRouter.get("/usuarios", Usuarios.getAllUsuarios);
+usuariosRouter.get('/usuarios', Usuarios.getAllUsuarios)
 
 // GET /usuarios/:id
-usuariosRouter.get("/usuarios/:id", Usuarios.getUsuariosById);
+usuariosRouter.get('/usuarios/:id', Usuarios.getUsuariosById)
 
 // POST /usuarios
 usuariosRouter.post(
-  "/usuarios",
+  '/usuarios',
   validation(usuarioSchema),
   Usuarios.postUsuario
-);
+)
 
 // PUT /usuarios/:id
 usuariosRouter.put(
-  "/usuarios/:id",
+  '/usuarios/:id',
   validation(usuarioSchema),
   Usuarios.putUsuario
-);
+)
 
 // DELETE "/usuarios/:id"
-usuariosRouter.delete("/usuarios/:id", Usuarios.deleteUsuario);
+usuariosRouter.delete('/usuarios/:id', Usuarios.deleteUsuario)
 
-export default usuariosRouter;
+export default usuariosRouter
