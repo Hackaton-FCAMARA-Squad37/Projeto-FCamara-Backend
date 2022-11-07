@@ -1,7 +1,7 @@
-import yup from "yup";
+import yup from 'yup'
 
 const nivelSchema = yup.object({
-  titulo: yup.string().required(),
-});
+  titulo: yup.string().required()
+})
 
-export default nivelSchema;
+export default nivelSchema
