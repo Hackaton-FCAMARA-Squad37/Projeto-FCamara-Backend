@@ -32,7 +32,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "sequelize": "^6.25.3",
-    "sqlite3": "^5.1.2"
+    "sqlite3": "^5.1.2",
+    "yup": "^0.32.11"
   },
   "type": "module"
 }
