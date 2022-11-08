@@ -1,11 +1,3 @@
-// class NivelModel {
-//   constructor (titulo) {
-//     this.titulo = titulo
-//   }
-// }
-
-// export default NivelModel
-
 import { DataTypes } from "sequelize";
 import sequelize from "../infra/database.js";
 
