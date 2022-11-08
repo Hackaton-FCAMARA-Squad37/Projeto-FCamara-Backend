@@ -12,7 +12,7 @@ temasRouter.get("/temas", temaController.getAllTemas);
 temasRouter.get("/temas/:id", temaController.getTemasById);
 
 // GET /temas/:id/conteudos
-temasRouter.get("/temas/:id/temas", temaController.getAllConteudos);
+temasRouter.get("/temas/:id/conteudos", temaController.getAllConteudos);
 
 // POST /temas
 temasRouter.post("/temas", validation(temaSchema), temaController.postTema);
