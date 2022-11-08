@@ -1,34 +1,34 @@
-import express from 'express'
-import Usuarios from '../controllers/Usuarios.js'
-import validation from '../middlewares/validationMiddleware.js'
-import usuarioSchema from '../validations/usuarioValidation.js'
+import express from "express";
+import { usuariosController } from "../controllers/usuarioController.js";
+import validation from "../middlewares/validationMiddleware.js";
+import usuarioSchema from "../validations/usuarioValidation.js";
 
-const usuariosRouter = express.Router()
+const usuariosRouter = express.Router();
 
 // GET /
-usuariosRouter.get('/', Usuarios.getPaginaPadrao)
+usuariosRouter.get("/", usuariosController.getPaginaPadrao);
 
 // GET /usuarios
-usuariosRouter.get('/usuarios', Usuarios.getAllUsuarios)
+usuariosRouter.get("/usuarios", usuariosController.getAllUsuarios);
 
 // GET /usuarios/:id
-usuariosRouter.get('/usuarios/:id', Usuarios.getUsuariosById)
+usuariosRouter.get("/usuarios/:id", usuariosController.getUsuariosById);
 
 // POST /usuarios
 usuariosRouter.post(
-  '/usuarios',
+  "/usuarios",
   validation(usuarioSchema),
-  Usuarios.postUsuario
-)
+  usuariosController.postUsuario
+);
 
 // PUT /usuarios/:id
 usuariosRouter.put(
-  '/usuarios/:id',
+  "/usuarios/:id",
   validation(usuarioSchema),
-  Usuarios.putUsuario
-)
+  usuariosController.putUsuario
+);
 
 // DELETE "/usuarios/:id"
-usuariosRouter.delete('/usuarios/:id', Usuarios.deleteUsuario)
+usuariosRouter.delete("/usuarios/:id", usuariosController.deleteUsuario);
 
-export default usuariosRouter
+export default usuariosRouter;
