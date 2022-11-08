@@ -1,4 +1,4 @@
-import Nivel from "../model/nivelModel";
+import Nivel from "../model/nivelModel.js";
 
 export const nivelController = {
   async getAllNiveis(request, response) {

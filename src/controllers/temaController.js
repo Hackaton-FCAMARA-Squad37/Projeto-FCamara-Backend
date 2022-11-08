@@ -1,4 +1,4 @@
-import Tema from "../model/temaModel";
+import Tema from "../model/temaModel.js";
 
 export const temaController = {
   async getAllNiveis(request, response) {

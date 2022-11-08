@@ -1,4 +1,4 @@
-import Conteudo from "../model/ConteudoModel";
+import Conteudo from "../model/ConteudoModel.js";
 
 export const conteudoController = {
   async getAllConteudos(request, response) {
