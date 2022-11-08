@@ -71,7 +71,6 @@ export const usuariosController = {
         400
       );
 
-      console.log(resultado);
       response.status(201).json("Usuario cadastrado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);

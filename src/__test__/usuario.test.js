@@ -12,7 +12,7 @@ it("usuario não encontrado para o id solicitado", () => {
 });
 
 it("nenhum usuário encontrado", () => {
-  const req = getMockReq({ params: { id: null } });
+  const req = getMockReq();
   const { res } = getMockRes();
 
   return usuariosController.getAllUsuarios(req, res).catch((error) => {
