@@ -4,6 +4,7 @@ import cors from "cors";
 import usuariosRouter from "./routes/usuariosRoutes.js";
 import conteudosRouter from "./routes/conteudosRoutes.js";
 import niveisRouter from "./routes/niveisRoutes.js";
+import temasRouter from "./routes/temasRoutes.js";
 import sequelize from "./infra/Database.js";
 
 await sequelize
@@ -27,5 +28,6 @@ app.use(cors());
 console.log(process.env.HOSTNAME);
 
 app.use(usuariosRouter);
-app.use(conteudosRouter);
 app.use(niveisRouter);
+app.use(temasRouter);
+app.use(conteudosRouter);
