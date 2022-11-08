@@ -13,12 +13,14 @@ export const usuariosController = {
       const usuarios = await Usuario.findAll();
 
       if (!usuarios) {
-        throw new Error("Falha ao pesquisar todos os usuários");
+        const error = new Error("Nenhum usuário encontrado.");
+        error.statusCode = 404;
+        throw error;
       }
 
       response.status(200).json(usuarios);
     } catch (error) {
-      response.status(404).json(error.message);
+      response.status(500).json(error.message);
     }
   },
 
@@ -27,18 +29,27 @@ export const usuariosController = {
       const usuario = await Usuario.findByPk(request.params.id);
 
       if (!usuario) {
-        throw new Error("Usuário não encontrado para esse ID");
+        const error = new Error("Nenhum usuário encontrado com esse ID");
+        error.statusCode = 404;
+        throw error;
       }
 
       response.status(200).json(usuario);
     } catch (error) {
-      response.status(404).json(error.message);
+      response.status(500).json(error.message);
     }
   },
 
   async postUsuario(request, response) {
     try {
-      await Usuario.create(request.body);
+      const usuarioCriado = await Usuario.create(request.body);
+
+      if (!usuarioCriado) {
+        const error = new Error("Usuário não foi cadastrado com sucesso.");
+        error.statusCode = 400;
+        throw error;
+      }
+
       response.status(201).json("Usuario criado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
