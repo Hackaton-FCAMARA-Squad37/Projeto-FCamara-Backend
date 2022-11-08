@@ -1,7 +1,7 @@
 import Tema from "../model/temaModel.js";
 
 export const temaController = {
-  async getAllNiveis(request, response) {
+  async getAllTemas(request, response) {
     try {
       const temas = await Tema.findAll();
       response.status(200).json(temas);
