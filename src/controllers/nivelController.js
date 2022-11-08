@@ -49,7 +49,7 @@ export const nivelController = {
         throw new Error("Temas não encontrados para o nível com esse Id");
       }
 
-      response.status(200).json(niveis);
+      response.status(200).json(temas);
     } catch (error) {
       response.status(404).json(error.message);
     }
