@@ -1,63 +1,58 @@
-import ConteudoDAO from "../DAO/ConteudoDAO.js";
-import ConteudoModel from "../model/conteudoModel.js";
+import Conteudo from "../model/ConteudoModel";
 
-class Conteudos {
-  static getAllConteudos = async (req, res) => {
+export const conteudoController = {
+  async getAllConteudos(request, response) {
     try {
-      res.status(200).json({ result: conteudos });
+      const conteudos = await Conteudo.findAll();
+      response.status(200).json(conteudos);
     } catch (error) {
-      res.status(404).json(error.message);
+      response.status(404).json(error.message);
     }
-  };
+  },
 
-  static getConteudoById = async (req, res) => {
+  async getConteudoById(request, response) {
     try {
-      const conteudo = await ConteudoDAO.listarConteudoPorId(req.params.id);
+      const conteudo = await Conteudo.findByPk(request.params.id);
+      response.status(200).json(conteudo);
+    } catch (error) {
+      response.status(404).json(error.message);
+    }
+  },
+
+  async postConteudo(request, response) {
+    try {
+      await Conteudo.create(request.body);
+      response.status(201).json(response);
+    } catch (error) {
+      response.status(400).json({ Error: "Conteudo não foi cadastrado" });
+    }
+  },
+  async updateConteudo(request, response) {
+    try {
+      const conteudo = await Conteudo.findByPk(request.params.id);
+      conteudo.titulo = request.body.titulo;
+      conteudo.tipo = request.body.tipo;
+      conteudo.duracao = request.body.duracao;
+      conteudo.descricao = request.body.descricao;
+      conteudo.link = request.body.link;
+      conteudo.donoConteudo = request.body.donoConteudo;
+      conteudo.tags = request.body.tags;
+      await conteudo.save();
+      response.status(201).json(response);
+    } catch (error) {
+      response.status(400).json({ Error: "Conteudo não foi atualizado" });
+    }
+  },
+  async deleteConteudo(request, response) {
+    try {
+      const conteudo = await Conteudo.findByPk(request.params.id);
       if (!conteudo) {
-        throw new Error("Conteúdo não encontrado para esse ID");
+        throw new Error("Conteudo não encontrado com esse Id");
       }
-
-      res.status(200).json(conteudo);
+      await conteudo.destroy();
+      response.status(200).json(conteudo);
     } catch (error) {
-      res.status(404).json(error.message);
+      response.status(404).json(error.message);
     }
-  };
-
-  static postConteudo = async (req, res) => {
-    try {
-      const conteudo = new ConteudoModel(...Object.values(req.body));
-      const response = await ConteudoDAO.inserirConteudo(conteudo);
-
-      res.status(201).json(response);
-    } catch (error) {
-      res.status(400).json({ Error: "Conteúdo não foi cadastrado" });
-    }
-  };
-
-  static putConteudo = async (req, res) => {
-    try {
-      const conteudo = new ConteudoModel(...Object.values(req.body));
-      const response = await ConteudoDAO.atualizarConteudoPorId(
-        req.params.id,
-        conteudo
-      );
-      res.status(201).json(response);
-    } catch (e) {
-      res.status(400).json({ Error: "Conteúdo não foi atualizado" });
-    }
-  };
-
-  static deleteConteudo = async (req, res) => {
-    try {
-      const conteudo = await ConteudoDAO.deletarConteudoPorId(req.params.id);
-      if (!conteudo) {
-        throw new Error("Conteúdo não encontrado para esse Id");
-      }
-      res.status(200).json(conteudo);
-    } catch (e) {
-      res.status(404).json(e.message);
-    }
-  };
-}
-
-export default Conteudos;
+  },
+};
