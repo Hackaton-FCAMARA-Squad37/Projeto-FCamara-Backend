@@ -1,25 +1,50 @@
-// class ConteudoModel {
-//   constructor(
-//     titulo,
-//     tipo,
-//     duracao,
-//     link,
-//     donoConteudo,
-//     trilha,
-//     nivel,
-//     tema,
-//     tags
-//   ) {
-//     this.titulo = titulo;
-//     this.tipo = tipo;
-//     this.duracao = duracao;
-//     this.link = link;
-//     this.donoConteudo = donoConteudo;
-//     this.trilha = trilha;
-//     this.nivel = nivel;
-//     this.tema = tema;
-//     this.tags = tags;
-//   }
-// }
+import DataTypes from "sequelize";
+import sequelize from "../infra/database.js";
+import Tema from "./temaModel.js";
 
-// export default ConteudoModel;
+const Conteudo = sequelize.define("conteudos", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  titulo: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  tipo: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  duracao: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  descricao: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  link: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  donoConteudo: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  tags: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+});
+
+Conteudo.belongsTo(Tema, {
+  constraint: true,
+  foreignKey: "idTema",
+});
+
+Tema.hasMany(Conteudo, {
+  foreignKey: "idTema",
+});
+
+export default Conteudo;
