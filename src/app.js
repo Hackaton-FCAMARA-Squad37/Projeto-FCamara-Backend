@@ -5,7 +5,7 @@ import usuariosRouter from "./routes/usuariosRoutes.js";
 import conteudosRouter from "./routes/conteudosRoutes.js";
 import niveisRouter from "./routes/niveisRoutes.js";
 import temasRouter from "./routes/temasRoutes.js";
-import sequelize from "./infra/Database.js";
+import sequelize from "./infra/database.js";
 
 await sequelize
   .sync()
@@ -18,10 +18,6 @@ dotenv.config();
 const port = process.env.PORT || 3002;
 const app = express();
 
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
-});
-
 app.use(express.json());
 app.use(cors());
 
@@ -31,3 +27,7 @@ app.use(usuariosRouter);
 app.use(niveisRouter);
 app.use(temasRouter);
 app.use(conteudosRouter);
+
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});

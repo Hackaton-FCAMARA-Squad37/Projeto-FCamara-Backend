@@ -41,7 +41,7 @@ export const usuariosController = {
       await Usuario.create(request.body);
       response.status(201).json(response);
     } catch (error) {
-      response.status(400).json({ Error: "usuario não foi cadastrado" });
+      response.status(400).json(error.message);
     }
   },
 
@@ -60,8 +60,8 @@ export const usuariosController = {
       await usuario.save();
 
       response.status(201).json(response);
-    } catch (e) {
-      response.status(400).json({ Error: "Usuario não foi atualizado" });
+    } catch (error) {
+      response.status(400).json(error.message);
     }
   },
 
@@ -75,8 +75,8 @@ export const usuariosController = {
 
       await usuario.destroy();
       res.status(200).json(usuario);
-    } catch (e) {
-      res.status(404).json(e.message);
+    } catch (error) {
+      res.status(404).json(error.message);
     }
   },
 };

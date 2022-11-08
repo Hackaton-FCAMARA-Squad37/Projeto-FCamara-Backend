@@ -24,7 +24,7 @@ export const conteudoController = {
       await Conteudo.create(request.body);
       response.status(201).json(response);
     } catch (error) {
-      response.status(400).json({ Error: "Conteudo não foi cadastrado" });
+      response.status(400).json(error.message);
     }
   },
   async putConteudo(request, response) {
@@ -40,7 +40,7 @@ export const conteudoController = {
       await conteudo.save();
       response.status(201).json(response);
     } catch (error) {
-      response.status(400).json({ Error: "Conteudo não foi atualizado" });
+      response.status(400).json(error.message);
     }
   },
   async deleteConteudo(request, response) {

@@ -24,7 +24,7 @@ export const temaController = {
       await Tema.create(request.body);
       response.status(201).json(response);
     } catch (error) {
-      response.status(400).json({ Error: "Tema não foi cadastrado" });
+      response.status(400).json(error.message);
     }
   },
 

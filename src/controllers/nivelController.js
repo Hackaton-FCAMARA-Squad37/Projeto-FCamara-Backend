@@ -1,4 +1,4 @@
-import Nivel from "../model/nivelModel.js";
+import Nivel from "../model/NivelModel.js";
 
 export const nivelController = {
   async getAllNiveis(request, response) {
@@ -22,9 +22,9 @@ export const nivelController = {
   async postNivel(request, response) {
     try {
       await Nivel.create(request.body);
-      response.status(201).json(response);
+      response.status(201).json("Nivel criada com sucesso!");
     } catch (error) {
-      response.status(400).json({ Error: "Nivel não foi cadastrado" });
+      response.status(400).json(error.message);
     }
   },
 
