@@ -1,5 +1,5 @@
 import ConteudoDAO from "../DAO/ConteudoDAO.js";
-import ConteudoModel from "../model/ConteudoModel.js";
+import ConteudoModel from "../model/conteudoModel.js";
 
 class Conteudos {
   static getAllConteudos = async (req, res) => {
