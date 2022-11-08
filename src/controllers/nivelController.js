@@ -36,8 +36,22 @@ export const nivelController = {
       }
       await nivel.destroy();
       response.status(200).json(nivel);
-    } catch (e) {
-      response.status(404).json(e.message);
+    } catch (error) {
+      response.status(404).json(error.message);
+    }
+  },
+  async getAllTemas(request, response) {
+    try {
+      const nivel = await Nivel.findByPk(request.params.id);
+      const temas = await nivel.getTemas();
+
+      if (!temas) {
+        throw new Error("Temas não encontrados para o nível com esse Id");
+      }
+
+      response.status(200).json(niveis);
+    } catch (error) {
+      response.status(404).json(error.message);
     }
   },
 };
