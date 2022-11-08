@@ -3,7 +3,6 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 import usuariosRouter from "./routes/usuariosRoutes.js";
 import conteudosRouter from "./routes/conteudosRoutes.js";
-import trilhasRouter from "./routes/trilhasRoutes.js";
 import niveisRouter from "./routes/niveisRoutes.js";
 import sequelize from "./infra/Database.js";
 
