@@ -1,4 +1,5 @@
 import Usuario from "../model/UsuarioModel.js";
+import { verificaSeExiste } from "../utils/verificaSeExiste.js";
 
 export const usuariosController = {
   getPaginaPadrao(request, response) {
@@ -12,11 +13,7 @@ export const usuariosController = {
     try {
       const usuarios = await Usuario.findAll();
 
-      if (!usuarios) {
-        const error = new Error("Nenhum usuário encontrado.");
-        error.statusCode = 404;
-        throw error;
-      }
+      verificaSeExiste(usuarios, "Nenhum usuário encontrado.", 404);
 
       response.status(200).json(usuarios);
     } catch (error) {
@@ -28,11 +25,7 @@ export const usuariosController = {
     try {
       const usuario = await Usuario.findByPk(request.params.id);
 
-      if (!usuario) {
-        const error = new Error("Nenhum usuário encontrado com esse ID");
-        error.statusCode = 404;
-        throw error;
-      }
+      verificaSeExiste(usuario, "Nenhum usuário encontrado com esse ID", 404);
 
       response.status(200).json(usuario);
     } catch (error) {
@@ -44,11 +37,11 @@ export const usuariosController = {
     try {
       const usuarioCriado = await Usuario.create(request.body);
 
-      if (!usuarioCriado) {
-        const error = new Error("Usuário não foi cadastrado com sucesso.");
-        error.statusCode = 400;
-        throw error;
-      }
+      verificaSeExiste(
+        usuarioCriado,
+        "Usuário não foi cadastrado com sucesso.",
+        400
+      );
 
       response.status(201).json("Usuario criado com sucesso!");
     } catch (error) {
@@ -60,16 +53,21 @@ export const usuariosController = {
     try {
       const usuario = await Usuario.findByPk(request.params.id);
 
-      if (!usuario) {
-        throw new Error("Usuário não encontrado para esse Id");
-      }
+      verificaSeExiste(usuario, "Usuário não foi atualizado com sucesso.", 400);
 
       usuario.nome = request.body.nome;
       usuario.email = request.body.email;
       usuario.senha = request.body.senha;
       usuario.xp = request.body.xp;
-      await usuario.save();
+      const resultado = await usuario.save();
 
+      verificaSeExiste(
+        resultado,
+        "Usuário não foi atualizado com sucesso.",
+        400
+      );
+
+      console.log(resultado);
       response.status(201).json("Usuario cadastrado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
@@ -80,12 +78,13 @@ export const usuariosController = {
     try {
       const usuario = await Usuario.findByPk(request.params.id);
 
-      if (!usuario) {
-        throw new Error("Usuário não encontrado para esse Id");
-      }
+      verificaSeExiste(usuario, "Usuário não foi deletado com sucesso.", 400);
 
-      await usuario.destroy();
-      res.status(200).json(usuario);
+      const resultado = await usuario.destroy();
+
+      verificaSeExiste(resultado, "Usuário não foi deletado com sucesso.", 400);
+
+      res.status(200).json("Usuário deletado com sucesso.");
     } catch (error) {
       res.status(404).json(error.message);
     }
