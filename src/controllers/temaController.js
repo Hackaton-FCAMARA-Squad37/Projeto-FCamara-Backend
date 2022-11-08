@@ -22,7 +22,7 @@ export const temaController = {
   async postTema(request, response) {
     try {
       await Tema.create(request.body);
-      response.status(201).json(response);
+      response.status(201).json("Tema cadastrado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
     }

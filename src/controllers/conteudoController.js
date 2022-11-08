@@ -22,7 +22,7 @@ export const conteudoController = {
   async postConteudo(request, response) {
     try {
       await Conteudo.create(request.body);
-      response.status(201).json(response);
+      response.status(201).json("Conteudo criado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
     }
@@ -38,7 +38,7 @@ export const conteudoController = {
       conteudo.donoConteudo = request.body.donoConteudo;
       conteudo.tags = request.body.tags;
       await conteudo.save();
-      response.status(201).json(response);
+      response.status(201).json("Conteudo atualizado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
     }

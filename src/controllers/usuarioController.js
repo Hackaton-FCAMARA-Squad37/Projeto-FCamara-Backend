@@ -39,7 +39,7 @@ export const usuariosController = {
   async postUsuario(request, response) {
     try {
       await Usuario.create(request.body);
-      response.status(201).json(response);
+      response.status(201).json("Usuario criado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
     }
@@ -59,7 +59,7 @@ export const usuariosController = {
       usuario.xp = request.body.xp;
       await usuario.save();
 
-      response.status(201).json(response);
+      response.status(201).json("Usuario cadastrado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
     }
