@@ -6,26 +6,26 @@ import conteudoSchema from "../validations/conteudoValidation.js";
 const conteudosRouter = express.Router();
 
 // GET /conteudos
-conteudosRouter.get("/conteudos", Conteudos.getAllConteudos);
+conteudosRouter.get("/conteudos", conteudoController.getAllConteudos);
 
 // GET /conteudos/:id
-conteudosRouter.get("/conteudos/:id", Conteudos.getConteudoById);
+conteudosRouter.get("/conteudos/:id", conteudoController.getConteudoById);
 
 // POST /conteudos
 conteudosRouter.post(
   "/conteudos",
   validation(conteudoSchema),
-  Conteudos.postConteudo
+  conteudoController.postConteudo
 );
 
 // PUT /conteudos/:id
 conteudosRouter.put(
   "/conteudos/:id",
   validation(conteudoSchema),
-  Conteudos.putConteudo
+  conteudoController.putConteudo
 );
 
 // DELETE "/conteudos/:id"
-conteudosRouter.delete("/conteudos/:id", Conteudos.deleteConteudo);
+conteudosRouter.delete("/conteudos/:id", conteudoController.deleteConteudo);
 
 export default conteudosRouter;
