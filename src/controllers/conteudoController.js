@@ -27,7 +27,7 @@ export const conteudoController = {
       response.status(400).json({ Error: "Conteudo não foi cadastrado" });
     }
   },
-  async updateConteudo(request, response) {
+  async putConteudo(request, response) {
     try {
       const conteudo = await Conteudo.findByPk(request.params.id);
       conteudo.titulo = request.body.titulo;
