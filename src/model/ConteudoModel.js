@@ -36,6 +36,10 @@ const Conteudo = sequelize.define("conteudos", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  concluido: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
 });
 
 Conteudo.belongsTo(Tema, {

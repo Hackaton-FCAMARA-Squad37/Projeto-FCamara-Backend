@@ -8,7 +8,7 @@ import temasRouter from "./routes/temasRoutes.js";
 import sequelize from "./infra/database.js";
 
 await sequelize
-  .sync()
+  .sync({ force: true })
   .then(() =>
     console.log("Todos os modelos foram sincronizados! Banco de dados pronto!")
   );

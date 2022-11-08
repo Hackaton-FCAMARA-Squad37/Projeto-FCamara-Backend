@@ -8,6 +8,7 @@ const conteudoSchema = yup.object({
   link: yup.string().url().required(),
   donoConteudo: yup.string().required(),
   tags: yup.string().required(),
+  concluido: yup.bool().required(),
 });
 
 export default conteudoSchema;
