@@ -53,7 +53,11 @@ export const usuariosController = {
     try {
       const usuario = await Usuario.findByPk(request.params.id);
 
-      verificaSeExiste(usuario, "Usuário não foi atualizado com sucesso.", 400);
+      verificaSeExiste(
+        usuario,
+        "Não foi possível encontrar usuário para atualização.",
+        400
+      );
 
       usuario.nome = request.body.nome;
       usuario.email = request.body.email;
