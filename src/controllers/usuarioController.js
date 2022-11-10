@@ -2,6 +2,30 @@ import Usuario from "../model/UsuarioModel.js";
 import { verificaSeExiste } from "../utils/verificaSeExiste.js";
 
 export const usuariosController = {
+  async login(request, response) {
+    try {
+      const usuarioBuscado = await Usuario.findAll({
+        where: {
+          email: request.body.email,
+          senha: request.body.senha,
+        },
+      });
+
+      const resultado = usuarioBuscado == false ? false : true;
+
+      verificaSeExiste(
+        resultado,
+        "Usuário não foi logado. Email ou senha inválidos.",
+        400
+      );
+
+      response.status(200).json(usuarioBuscado);
+    } catch (error) {
+      response
+        .status(400)
+        .json("Usuário não foi logado. Email ou senha inválidos.");
+    }
+  },
   async getAllUsuarios(request, response) {
     try {
       const usuarios = await Usuario.findAll();

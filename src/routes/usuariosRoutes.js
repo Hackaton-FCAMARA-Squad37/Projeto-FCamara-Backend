@@ -28,4 +28,7 @@ usuariosRouter.put(
 // DELETE "/usuarios/:id"
 usuariosRouter.delete("/usuarios/:id", usuariosController.deleteUsuario);
 
+// GET /usuarios/login
+usuariosRouter.get("/login", usuariosController.login);
+
 export default usuariosRouter;

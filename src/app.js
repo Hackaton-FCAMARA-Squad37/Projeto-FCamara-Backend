@@ -25,7 +25,7 @@ app.use(cors());
 
 console.log(process.env.HOSTNAME);
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(usuariosRouter);
 app.use(niveisRouter);
 app.use(temasRouter);
