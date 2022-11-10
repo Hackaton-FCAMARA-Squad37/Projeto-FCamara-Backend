@@ -1,4 +1,4 @@
-import Tema from "../model/temaModel.js";
+import Tema from "../model/TemaModel.js";
 
 export const temaController = {
   async getAllTemas(request, response) {
