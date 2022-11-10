@@ -6,7 +6,7 @@ import usuariosRouter from "./routes/usuariosRoutes.js";
 import conteudosRouter from "./routes/conteudosRoutes.js";
 import niveisRouter from "./routes/niveisRoutes.js";
 import temasRouter from "./routes/temasRoutes.js";
-import sequelize from "./infra/database.js";
+import sequelize from "./infra/Database.js";
 import swaggerDocs from "./swagger.json" assert { type: "json" };
 
 await sequelize
