@@ -1,6 +1,6 @@
 import DataTypes from "sequelize";
 import sequelize from "../infra/Database.js";
-import Tema from "./temaModel.js";
+import Tema from "./TemaModel.js";
 
 const Conteudo = sequelize.define(
   "conteudos",
