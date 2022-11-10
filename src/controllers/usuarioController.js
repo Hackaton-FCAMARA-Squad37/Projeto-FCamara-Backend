@@ -2,13 +2,6 @@ import Usuario from "../model/UsuarioModel.js";
 import { verificaSeExiste } from "../utils/verificaSeExiste.js";
 
 export const usuariosController = {
-  getPaginaPadrao(request, response) {
-    response.send(`
-    <h2>API FCamara Squad37</h2>
-    <p>Acesso o nosso repositório (<a href="https://github.com/Hackaton-FCAMARA-Squad37/Projeto-FCamara-Backend">Clique aqui!</a>) para mais informações!</p>
-    `);
-  },
-
   async getAllUsuarios(request, response) {
     try {
       const usuarios = await Usuario.findAll();

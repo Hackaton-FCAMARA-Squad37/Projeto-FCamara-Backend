@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "API Orange Evolution - Squad 37",
-    "description": "Essa API tem como objetivo a manipulação dos cursos da Orange Evolution.",
+    "description": "Essa API tem como objetivo a manipulação dos cursos da Orange Evolution. Você pode acessar mais informações em: <a href='https://github.com/Hackaton-FCAMARA-Squad37/Projeto-FCamara-Backend' target='_blank'>https://github.com/Hackaton-FCAMARA-Squad37/Projeto-FCamara-Backend</a>",
     "termsOfService": "http://localhost:3000/terms",
     "contact": {
       "email": "guisilveira.cout@gmail.com"

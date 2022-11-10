@@ -5,9 +5,6 @@ import usuarioSchema from "../validations/usuarioValidation.js";
 
 const usuariosRouter = express.Router();
 
-// GET /
-usuariosRouter.get("/", usuariosController.getPaginaPadrao);
-
 // GET /usuarios
 usuariosRouter.get("/usuarios", usuariosController.getAllUsuarios);
 
