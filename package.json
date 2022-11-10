@@ -34,6 +34,7 @@
     "express": "^4.18.2",
     "sequelize": "^6.25.3",
     "sqlite3": "^5.1.2",
+    "swagger-ui-express": "^4.6.0",
     "yup": "^0.32.11"
   },
   "type": "module"

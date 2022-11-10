@@ -28,17 +28,30 @@ export const conteudoController = {
 
   async postConteudo(request, response) {
     try {
+      const conteudoJaExiste = await Conteudo.findAll({
+        where: {
+          titulo: request.body.titulo,
+          link: request.body.link,
+        },
+      });
+
+      verificaSeExiste(
+        conteudoJaExiste == false,
+        "Conteúdo já cadastrado.",
+        404
+      );
+
       const conteudoCriado = await Conteudo.create(request.body);
 
       verificaSeExiste(
         conteudoCriado,
-        "Conteudo não foi cadastrado com sucesso",
+        "Conteúdo não foi cadastrado com sucesso.",
         400
       );
 
       response.status(201).json("Conteudo criado com sucesso!");
     } catch (error) {
-      response.status(400).json(error.message);
+      response.status(404).json(error.message);
     }
   },
   async putConteudo(request, response) {
@@ -68,7 +81,7 @@ export const conteudoController = {
 
       response.status(201).json("Conteudo atualizado com sucesso!");
     } catch (error) {
-      response.status(400).json(error.message);
+      response.status(400).json("Conteúdo não foi atualizado com sucesso.");
     }
   },
   async deleteConteudo(request, response) {
@@ -91,7 +104,9 @@ export const conteudoController = {
 
       response.status(200).json(conteudo);
     } catch (error) {
-      response.status(404).json(error.message);
+      response
+        .status(404)
+        .json("Não foi possível encontrar o conteúdo para ser deletado.");
     }
   },
 };

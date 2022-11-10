@@ -17,7 +17,7 @@ export const usuariosController = {
 
       response.status(200).json(usuarios);
     } catch (error) {
-      response.status(500).json(error.message);
+      response.status(404).json(error.message);
     }
   },
 
@@ -29,12 +29,20 @@ export const usuariosController = {
 
       response.status(200).json(usuario);
     } catch (error) {
-      response.status(500).json(error.message);
+      response.status(404).json(error.message);
     }
   },
 
   async postUsuario(request, response) {
     try {
+      const usuarioJaExiste = await Usuario.findAll({
+        where: {
+          email: request.body.email,
+        },
+      });
+
+      verificaSeExiste(usuarioJaExiste == false, "Usuário já cadastrado.", 400);
+
       const usuarioCriado = await Usuario.create(request.body);
 
       verificaSeExiste(
@@ -56,7 +64,7 @@ export const usuariosController = {
       verificaSeExiste(
         usuario,
         "Não foi possível encontrar usuário para atualização.",
-        400
+        404
       );
 
       usuario.nome = request.body.nome;
@@ -71,7 +79,7 @@ export const usuariosController = {
         400
       );
 
-      response.status(201).json("Usuario cadastrado com sucesso!");
+      response.status(201).json("Usuario modificado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
     }
@@ -81,7 +89,11 @@ export const usuariosController = {
     try {
       const usuario = await Usuario.findByPk(request.params.id);
 
-      verificaSeExiste(usuario, "Usuário não foi deletado com sucesso.", 400);
+      verificaSeExiste(
+        usuario,
+        "Usuário não foi encontrado para ser deletado com sucesso.",
+        404
+      );
 
       const resultado = await usuario.destroy();
 
@@ -89,7 +101,7 @@ export const usuariosController = {
 
       res.status(200).json("Usuário deletado com sucesso.");
     } catch (error) {
-      res.status(404).json(error.message);
+      res.status(400).json(error.message);
     }
   },
 };

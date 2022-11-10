@@ -22,7 +22,7 @@ export const nivelController = {
   async postNivel(request, response) {
     try {
       await Nivel.create(request.body);
-      response.status(201).json("Nivel criada com sucesso!");
+      response.status(201).json("Nivel criado com sucesso!");
     } catch (error) {
       response.status(400).json(error.message);
     }
@@ -32,7 +32,9 @@ export const nivelController = {
     try {
       const nivel = await Nivel.findByPk(request.params.id);
       if (!nivel) {
-        throw new Error("Nivel não encontrado para esse Id");
+        throw new Error(
+          "Nível não foi encontrado para ser deletado com sucesso."
+        );
       }
       await nivel.destroy();
       response.status(200).json(nivel);

@@ -6,7 +6,7 @@ export const temaController = {
       const temas = await Tema.findAll();
       response.status(200).json(temas);
     } catch (error) {
-      response.status(404).json(error.message);
+      response.status(404).json("Falha ao buscar os temas.");
     }
   },
 
@@ -15,7 +15,7 @@ export const temaController = {
       const tema = await Tema.findByPk(request.params.id);
       response.status(200).json(tema);
     } catch (error) {
-      response.status(404).json(error.message);
+      response.status(404).json("Falha ao buscar o ID.");
     }
   },
 
@@ -24,7 +24,7 @@ export const temaController = {
       await Tema.create(request.body);
       response.status(201).json("Tema cadastrado com sucesso!");
     } catch (error) {
-      response.status(400).json(error.message);
+      response.status(400).json("Falha ao cadastrar tema.");
     }
   },
 
@@ -37,7 +37,9 @@ export const temaController = {
       await tema.destroy();
       response.status(200).json(tema);
     } catch (error) {
-      response.status(404).json(error.message);
+      response
+        .status(404)
+        .json("Tema não foi encontrado para ser deletado com sucesso.");
     }
   },
   async getAllConteudos(request, response) {
@@ -51,7 +53,9 @@ export const temaController = {
 
       response.status(200).json(conteudos);
     } catch (error) {
-      response.status(404).json(error.message);
+      response
+        .status(404)
+        .json("Conteúdos não encontrados para o tema com esse Id");
     }
   },
 };

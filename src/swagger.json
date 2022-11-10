@@ -1,0 +1,810 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Orange Evolution - Squad 37",
+    "description": "Essa API tem como objetivo a manipulação dos cursos da Orange Evolution.",
+    "termsOfService": "http://localhost:3000/terms",
+    "contact": {
+      "email": "guisilveira.cout@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/usuarios": {
+      "post": {
+        "summary": "Cadastro de usuário",
+        "description": "Essa rota é responsável por cadastrar um novo usuário",
+        "tags": ["Usuário"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "nome": "Paulo",
+                    "email": "paulo@email.com",
+                    "senha": "senha123",
+                    "xp": 200
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Usuário já cadastrado."
+          },
+          "201": {
+            "description": "Usuario criado com sucesso!"
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca todos os usuários.",
+        "description": "Essa rota busca todos os usuários cadastrados no servidor.",
+        "tags": ["Usuário"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Usuario"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "nome": "Paulo",
+                      "email": "paulo@email.com",
+                      "senha": "senha123",
+                      "xp": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum usuário encontrado."
+          }
+        }
+      }
+    },
+    "/usuarios/{id}": {
+      "get": {
+        "summary": "Busca usuário por ID",
+        "description": "Retorna um único usuário para esse ID",
+        "tags": ["Usuário"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Usuario"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "nome": "Paulo",
+                      "email": "paulo@email.com",
+                      "senha": "senha123",
+                      "xp": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum usuário encontrado com esse ID"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifica o usuário com esse ID",
+        "description": "Realiza a modificação do usuário com o ID buscado.",
+        "tags": ["Usuário"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "nome": "João Carlos",
+                    "email": "joao@email.com",
+                    "senha": "senha456",
+                    "xp": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuario modificado com sucesso!"
+          },
+          "404": {
+            "description": "Não foi possível encontrar usuário para atualização."
+          },
+          "400": {
+            "description": "Usuário não foi atualizado com sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta o usuário com esse ID",
+        "description": "Realiza a deleção do usuário com o ID buscado.",
+        "tags": ["Usuário"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario deletado com sucesso!"
+          },
+          "404": {
+            "description": "Usuário não foi encontrado para ser deletado com sucesso."
+          },
+          "400": {
+            "description": "Usuário não foi deletado com sucesso."
+          }
+        }
+      }
+    },
+    "/conteudos": {
+      "post": {
+        "summary": "Cadastro de conteúdos",
+        "description": "Essa rota é responsável por cadastrar um novo conteúdo",
+        "tags": ["Conteúdos"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Conteudo"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "titulo": "conteudo bacana",
+                    "tipo": "artigo",
+                    "duracao": "8:00",
+                    "descricao": "conteúdo bacana sobre javascript",
+                    "link": "http://conteudobacana.com",
+                    "donoConteudo": "bacanaCompany",
+                    "tags": "legal,maneiro,irado",
+                    "concluido": false,
+                    "idTema": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Conteúdo não foi cadastrado com sucesso."
+          },
+          "404": {
+            "description": "Conteúdo já cadastrado."
+          },
+          "201": {
+            "description": "Conteúdo criado com sucesso!"
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca todos os conteúdos.",
+        "description": "Essa rota busca todos os conteúdos cadastrados no servidor.",
+        "tags": ["Conteúdos"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Conteudo"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "titulo": "conteudo bacana",
+                      "tipo": "artigo",
+                      "duracao": "8:00",
+                      "descricao": "conteúdo bacana sobre javascript",
+                      "link": "http://conteudobacana.com",
+                      "donoConteudo": "bacanaCompany",
+                      "tags": "legal,maneiro,irado",
+                      "concluido": false,
+                      "idTema": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum conteúdo encontrado."
+          }
+        }
+      }
+    },
+    "/conteudos/{id}": {
+      "get": {
+        "summary": "Busca conteudo por ID",
+        "description": "Retorna um único conteúdo para esse ID",
+        "tags": ["Conteúdos"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do conteúdo a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Usuario"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "titulo": "conteudo bacana",
+                      "tipo": "artigo",
+                      "duracao": "8:00",
+                      "descricao": "conteúdo bacana sobre javascript",
+                      "link": "http://conteudobacana.com",
+                      "donoConteudo": "bacanaCompany",
+                      "tags": "legal,maneiro,irado",
+                      "concluido": false,
+                      "idTema": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum conteúdo encontrado com esse ID"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifica o conteúdo com esse ID",
+        "description": "Realiza a modificação do conteúdo com o ID buscado.",
+        "tags": ["Conteúdos"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do conteúdo a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Conteudo"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "titulo": "conteudo novo",
+                    "tipo": "video",
+                    "duracao": "13:00",
+                    "descricao": "conteúdo bacana sobre python",
+                    "link": "http://conteudobacananovo.com",
+                    "donoConteudo": "bacanaCompany",
+                    "tags": "legal,maneiro,irado",
+                    "concluido": false,
+                    "idTema": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Conteudo atualizado com sucesso!"
+          },
+          "404": {
+            "description": "Não foi possível encontrar o conteúdo para atualização."
+          },
+          "400": {
+            "description": "Conteúdo não foi atualizado com sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta o conteúdo com esse ID",
+        "description": "Realiza a deleção do conteúdo com o ID buscado.",
+        "tags": ["Conteúdos"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do conteúdo a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Conteúdo deletado com sucesso!"
+          },
+          "404": {
+            "description": "Não foi possível encontrar o conteúdo para ser deletado."
+          },
+          "400": {
+            "description": "Conteúdo não foi deletado com sucesso."
+          }
+        }
+      }
+    },
+    "/niveis": {
+      "post": {
+        "summary": "Cadastra um nivel",
+        "description": "Essa rota é responsável por cadastrar um novo nível.",
+        "tags": ["Nível"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Nivel"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "titulo": "primeiro nível"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Nível já cadastrado."
+          },
+          "201": {
+            "description": "Nível criado com sucesso!"
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca todos os níveis.",
+        "description": "Essa rota busca todos os níveis cadastrados no servidor.",
+        "tags": ["Nível"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Nivel"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "titulo": "nivel bacana"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum usuário encontrado."
+          }
+        }
+      }
+    },
+    "/niveis/{id}": {
+      "get": {
+        "summary": "Busca nível por ID",
+        "description": "Retorna um único nível para esse ID",
+        "tags": ["Nível"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do nível a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Nivel"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "titulo": "nível bacana"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum nível encontrado com esse ID"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta o nível com esse ID",
+        "description": "Realiza a deleção do nível com o ID buscado.",
+        "tags": ["Nível"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do nível a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nível deletado com sucesso!"
+          },
+          "404": {
+            "description": "Nível não foi encontrado para ser deletado com sucesso."
+          }
+        }
+      }
+    },
+    "/niveis/{id}/temas": {
+      "get": {
+        "summary": "Busca os temas para o nível com esse ID",
+        "description": "Retorna os temas para o nível com esse ID",
+        "tags": ["Nível"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do nível a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Nivel"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "titulo": "titulo respectivo",
+                      "idNivel": 2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Temas não encontrados para o nível com esse Id"
+          }
+        }
+      }
+    },
+    "/temas": {
+      "post": {
+        "summary": "Cadastra um tema",
+        "description": "Essa rota é responsável por cadastrar um novo tema.",
+        "tags": ["Tema"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tema"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "titulo": "um tema legal",
+                    "idNivel": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Falha ao cadastrar tema."
+          },
+          "201": {
+            "description": "Tema cadastrado com sucesso!"
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca todos os temas.",
+        "description": "Essa rota busca todos os temas cadastrados no servidor.",
+        "tags": ["Tema"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Tema"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "titulo": "tema bacana",
+                      "idNivel": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Falha ao buscar os temas."
+          }
+        }
+      }
+    },
+    "/temas/{id}": {
+      "get": {
+        "summary": "Busca tema por ID",
+        "description": "Retorna um único tema para esse ID",
+        "tags": ["Tema"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do tema a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Tema"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "titulo": "tema bacana",
+                      "idNivel": 2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Falha ao buscar o ID."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta o tema com esse ID",
+        "description": "Realiza a deleção do tema com o ID buscado.",
+        "tags": ["Tema"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do tema a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tema deletado com sucesso!"
+          },
+          "404": {
+            "description": "Tema não foi encontrado para ser deletado com sucesso."
+          }
+        }
+      }
+    },
+    "/temas/{id}/conteudos": {
+      "get": {
+        "summary": "Busca os conteudos para o tema com esse ID",
+        "description": "Retorna os conteudos para o tema com esse ID",
+        "tags": ["Tema"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do tema a ser retornado",
+            "required": true,
+            "type": "interger",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Tema"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "titulo": "conteudo bacana",
+                      "tipo": "artigo",
+                      "duracao": "8:00",
+                      "descricao": "conteúdo bacana sobre javascript",
+                      "link": "http://conteudobacana.com",
+                      "donoConteudo": "bacanaCompany",
+                      "tags": "legal,maneiro,irado",
+                      "concluido": false,
+                      "idTema": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Conteúdos não encontrados para o tema com esse Id"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "xp": {
+            "type": "number"
+          }
+        }
+      },
+      "Conteudo": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "duracao": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "donoConteudo": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "concluido": {
+            "type": "boolean"
+          },
+          "idTema": {
+            "type": "interger"
+          }
+        }
+      },
+      "Nivel": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          }
+        }
+      },
+      "Tema": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "idNivel": {
+            "type": "interger"
+          }
+        }
+      }
+    }
+  }
+}
