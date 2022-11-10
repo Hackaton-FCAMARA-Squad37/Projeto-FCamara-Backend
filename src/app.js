@@ -10,7 +10,7 @@ import sequelize from "./infra/database.js";
 import swaggerDocs from "./swagger.json" assert { type: "json" };
 
 await sequelize
-  .sync({ force: true })
+  .sync()
   .then(() =>
     console.log("Todos os modelos foram sincronizados! Banco de dados pronto!")
   );
