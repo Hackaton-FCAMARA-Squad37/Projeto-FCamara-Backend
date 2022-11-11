@@ -733,75 +733,125 @@
           }
         }
       }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Usuario": {
-        "type": "object",
-        "properties": {
-          "nome": {
+    },
+    "/login": {
+      "get": {
+        "summary": "Realiza o login dos usuários.",
+        "description": "Essa rota busca se o usuário está cadastrado no servidor.",
+        "tags": ["Usuário"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Email do usuário",
+            "required": true,
             "type": "string"
           },
-          "email": {
+          {
+            "name": "senha",
+            "in": "query",
+            "description": "Senha do usuário",
+            "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Usuario"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "id": 1,
+                      "nome": "Paulo",
+                      "email": "paulo@email.com",
+                      "senha": "senha123",
+                      "xp": 200
+                    }
+                  }
+                }
+              }
+            }
           },
-          "senha": {
-            "type": "string"
-          },
-          "xp": {
-            "type": "number"
+          "400": {
+            "description": "Usuário não foi logado. Email ou senha inválidos."
           }
         }
       },
-      "Conteudo": {
-        "type": "object",
-        "properties": {
-          "titulo": {
-            "type": "string"
+      "components": {
+        "schemas": {
+          "Usuario": {
+            "type": "object",
+            "properties": {
+              "nome": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "senha": {
+                "type": "string"
+              },
+              "xp": {
+                "type": "number"
+              }
+            }
           },
-          "tipo": {
-            "type": "string"
+          "Conteudo": {
+            "type": "object",
+            "properties": {
+              "titulo": {
+                "type": "string"
+              },
+              "tipo": {
+                "type": "string"
+              },
+              "duracao": {
+                "type": "string"
+              },
+              "descricao": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              },
+              "donoConteudo": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "concluido": {
+                "type": "boolean"
+              },
+              "idTema": {
+                "type": "interger"
+              }
+            }
           },
-          "duracao": {
-            "type": "string"
+          "Nivel": {
+            "type": "object",
+            "properties": {
+              "titulo": {
+                "type": "string"
+              }
+            }
           },
-          "descricao": {
-            "type": "string"
-          },
-          "link": {
-            "type": "string"
-          },
-          "donoConteudo": {
-            "type": "string"
-          },
-          "tags": {
-            "type": "string"
-          },
-          "concluido": {
-            "type": "boolean"
-          },
-          "idTema": {
-            "type": "interger"
-          }
-        }
-      },
-      "Nivel": {
-        "type": "object",
-        "properties": {
-          "titulo": {
-            "type": "string"
-          }
-        }
-      },
-      "Tema": {
-        "type": "object",
-        "properties": {
-          "titulo": {
-            "type": "string"
-          },
-          "idNivel": {
-            "type": "interger"
+          "Tema": {
+            "type": "object",
+            "properties": {
+              "titulo": {
+                "type": "string"
+              },
+              "idNivel": {
+                "type": "interger"
+              }
+            }
           }
         }
       }
