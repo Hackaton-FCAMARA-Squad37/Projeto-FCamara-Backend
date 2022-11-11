@@ -31,7 +31,7 @@ usuariosRouter.put(
 // DELETE "/usuarios/:id"
 usuariosRouter.delete("/usuarios/:id", usuariosController.deleteUsuario);
 
-// GET /usuarios/login
-usuariosRouter.get("/login", usuariosController.login);
+// POST /usuarios/login
+usuariosRouter.post("/login", usuariosController.login);
 
 export default usuariosRouter;

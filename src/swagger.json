@@ -735,7 +735,7 @@
       }
     },
     "/login": {
-      "get": {
+      "post": {
         "summary": "Realiza o login dos usuários.",
         "description": "Essa rota busca se o usuário está cadastrado no servidor.",
         "tags": ["Usuário"],
