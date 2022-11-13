@@ -855,6 +855,63 @@
           }
         }
       }
+    },
+    "/linka-user": {
+      "post": {
+        "summary": "Linka uma trilha a um usuário",
+        "description": "Essa rota associa a trilha escolhida a um usuário específico.",
+        "tags": ["Usuário&Temas"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "product": {
+                  "value": {
+                    "usuarioId": 1,
+                    "temaId": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Erro ao adicionar tema ao usuário"
+          },
+          "200": {
+            "description": "Tema associado ao usuário com sucesso!"
+          }
+        }
+      }
+    },
+    "/usuario-temas": {
+      "post": {
+        "summary": "Busca todos as trilhas de um usuário",
+        "description": "Essa rota busca as trilhas iniciadas por um usuário específico.",
+        "tags": ["Usuário&Temas"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "product": {
+                  "value": {
+                    "usuarioId": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Erro ao adicionar buscar os temas do usuário"
+          },
+          "200": {
+            "description": "Temas encontrados com sucesso!"
+          }
+        }
+      }
     }
   }
 }
