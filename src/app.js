@@ -8,14 +8,13 @@ import niveisRouter from "./routes/niveisRoutes.js";
 import temasRouter from "./routes/temasRoutes.js";
 import sequelize from "./infra/Database.js";
 import swaggerDocs from "./swagger.json" assert { type: "json" };
+import usuarioTemaRouter from "./routes/usuarioTemaRoutes.js";
 
 await sequelize
   .sync()
   .then(() =>
     console.log("Todos os modelos foram sincronizados! Banco de dados pronto!")
   );
-
-dotenv.config();
 
 const port = process.env.PORT || 3002;
 const app = express();
@@ -40,6 +39,7 @@ app.use((req, res, next) => {
 console.log(process.env.HOSTNAME);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use(usuarioTemaRouter);
 app.use(usuariosRouter);
 app.use(niveisRouter);
 app.use(temasRouter);
