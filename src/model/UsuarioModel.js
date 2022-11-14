@@ -21,10 +21,6 @@ const Usuario = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    xp: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   },
   {
     timestamps: false,

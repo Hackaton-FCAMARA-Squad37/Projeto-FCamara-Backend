@@ -913,5 +913,44 @@
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "nome": "string",
+          "email": "string",
+          "senha": "string"
+        }
+      },
+      "Tema": {
+        "type": "object",
+        "properties": {
+          "titulo": "string",
+          "idNivel": "interger"
+        }
+      },
+      "Nivel": {
+        "type": "object",
+        "properties": {
+          "titulo": "string"
+        }
+      },
+      "Conteudo": {
+        "type": "object",
+        "properties": {
+          "titulo": "string",
+          "tipo": "string",
+          "duracao": "integer",
+          "descricao": "string",
+          "link": "string",
+          "donoConteudo": "string",
+          "tags": "string",
+          "divisao": "string"
+        }
+      },
+      "Usuario&Tema": {}
+    }
   }
 }
