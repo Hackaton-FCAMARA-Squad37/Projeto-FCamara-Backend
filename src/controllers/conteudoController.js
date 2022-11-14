@@ -71,6 +71,7 @@ export const conteudoController = {
       conteudo.link = request.body.link;
       conteudo.donoConteudo = request.body.donoConteudo;
       conteudo.tags = request.body.tags;
+      conteudo.divisao = request.body.divisao;
       const resultado = await conteudo.save();
 
       verificaSeExiste(

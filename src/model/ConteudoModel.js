@@ -38,8 +38,8 @@ const Conteudo = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    concluido: {
-      type: DataTypes.BOOLEAN,
+    divisao: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
