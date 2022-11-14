@@ -947,7 +947,8 @@
           "link": "string",
           "donoConteudo": "string",
           "tags": "string",
-          "divisao": "string"
+          "divisao": "string",
+          "idTema": "integer"
         }
       },
       "Usuario&Tema": {}
