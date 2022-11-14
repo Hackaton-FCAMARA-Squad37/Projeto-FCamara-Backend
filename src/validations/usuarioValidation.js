@@ -4,7 +4,6 @@ const usuarioSchema = yup.object({
   nome: yup.string().required(),
   email: yup.string().email().required(),
   senha: yup.string().min(6).max(20).required(),
-  xp: yup.number().required(),
 });
 
 export default usuarioSchema;
