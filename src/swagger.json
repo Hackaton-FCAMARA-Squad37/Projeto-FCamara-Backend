@@ -26,8 +26,7 @@
                   "value": {
                     "nome": "Paulo",
                     "email": "paulo@email.com",
-                    "senha": "senha123",
-                    "xp": 200
+                    "senha": "senha123"
                   }
                 }
               }
@@ -782,78 +781,6 @@
             "description": "Usuário não foi logado. Email ou senha inválidos."
           }
         }
-      },
-      "components": {
-        "schemas": {
-          "Usuario": {
-            "type": "object",
-            "properties": {
-              "nome": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "senha": {
-                "type": "string"
-              },
-              "xp": {
-                "type": "number"
-              }
-            }
-          },
-          "Conteudo": {
-            "type": "object",
-            "properties": {
-              "titulo": {
-                "type": "string"
-              },
-              "tipo": {
-                "type": "string"
-              },
-              "duracao": {
-                "type": "string"
-              },
-              "descricao": {
-                "type": "string"
-              },
-              "link": {
-                "type": "string"
-              },
-              "donoConteudo": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "string"
-              },
-              "concluido": {
-                "type": "boolean"
-              },
-              "idTema": {
-                "type": "interger"
-              }
-            }
-          },
-          "Nivel": {
-            "type": "object",
-            "properties": {
-              "titulo": {
-                "type": "string"
-              }
-            }
-          },
-          "Tema": {
-            "type": "object",
-            "properties": {
-              "titulo": {
-                "type": "string"
-              },
-              "idNivel": {
-                "type": "interger"
-              }
-            }
-          }
-        }
       }
     },
     "/linka-user": {
@@ -864,6 +791,9 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario&Temas"
+              },
               "examples": {
                 "product": {
                   "value": {
@@ -893,6 +823,9 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario&Temas"
+              },
               "examples": {
                 "product": {
                   "value": {
@@ -919,39 +852,82 @@
       "Usuario": {
         "type": "object",
         "properties": {
-          "nome": "string",
-          "email": "string",
-          "senha": "string"
-        }
-      },
-      "Tema": {
-        "type": "object",
-        "properties": {
-          "titulo": "string",
-          "idNivel": "interger"
-        }
-      },
-      "Nivel": {
-        "type": "object",
-        "properties": {
-          "titulo": "string"
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "xp": {
+            "type": "number"
+          }
         }
       },
       "Conteudo": {
         "type": "object",
         "properties": {
-          "titulo": "string",
-          "tipo": "string",
-          "duracao": "integer",
-          "descricao": "string",
-          "link": "string",
-          "donoConteudo": "string",
-          "tags": "string",
-          "divisao": "string",
-          "idTema": "integer"
+          "titulo": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "duracao": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "donoConteudo": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "concluido": {
+            "type": "boolean"
+          },
+          "idTema": {
+            "type": "interger"
+          }
         }
       },
-      "Usuario&Tema": {}
+      "Nivel": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          }
+        }
+      },
+      "Tema": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "idNivel": {
+            "type": "interger"
+          }
+        }
+      },
+      "Usuario&Tema": {
+        "type": "object",
+        "properties": {
+          "usuarioId": {
+            "type": "interger"
+          },
+          "temaId": {
+            "type": "interger"
+          }
+        }
+      }
     }
   }
 }
